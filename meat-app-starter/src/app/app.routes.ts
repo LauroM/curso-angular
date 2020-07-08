@@ -3,6 +3,8 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { RestaurantsComponent } from './restaurants/restaurants.component';
 import { RestaurantDetailComponent } from './restaurant-detail/restaurant-detail.component';
+import { MenuComponent } from './restaurant-detail/menu/menu.component';
+import { ReviewsComponent } from './restaurant-detail/reviews/reviews.component';
 
 export const ROUTES: Routes = [
     {
@@ -16,7 +18,12 @@ export const ROUTES: Routes = [
     // parametrizando parametros
     {
         path:'restaurants/:id',
-        component: RestaurantDetailComponent
+        component: RestaurantDetailComponent,
+        children: [
+            {path: '', redirectTo: 'menu', pathMatch: 'full'},
+            {path: 'menu', component: MenuComponent},
+            {path: 'reviews', component: ReviewsComponent}
+        ]
     },
     {
         path:'about',
