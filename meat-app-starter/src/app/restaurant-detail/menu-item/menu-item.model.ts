@@ -1,7 +1,7 @@
 export interface MenuItem {
-    id: string
-    name: string
-    description: string
-    price: number
-    imagePath: string
+    MenuId: string
+    Name: string
+    Description: string
+    Price: number
+    ImagePath: string
 }

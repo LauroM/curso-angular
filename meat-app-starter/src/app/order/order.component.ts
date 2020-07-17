@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/fo
 import { RadioOption } from 'app/shared/radio/radio-option.model';
 import { OrderService } from './order.service';
 import { CartItem } from 'app/restaurant-detail/shopping-cart/cart-item.model';
-import { Order, OrderItem } from './order.model';
+import { Order } from './order.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -77,8 +77,11 @@ export class OrderComponent implements OnInit {
   }
 
   checkOrder(order: Order){
-    order.orderItems = this.cartItems()
-      .map((item:CartItem)=>new OrderItem(item.quantity,item.menuItem.id));
+    order.quantity = 0;
+    order.menuId = "Lauro's fit" 
+    /*item.menuItem.MenuId
+    = this.cartItems()
+      .map((item:CartItem)=>new OrderItem(item.quantity,item.menuItem.MenuId));*/
 
     this.orderService.checkOrder(order).subscribe((orderId: string)=>{
       this.router.navigate(['/order-summary']);

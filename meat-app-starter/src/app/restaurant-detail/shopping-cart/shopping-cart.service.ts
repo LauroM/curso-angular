@@ -14,19 +14,19 @@ export class ShoppingCartService{
     }
 
     addItem(item:MenuItem){
-        let foundItem = this.items.find( (mitem) => mitem.menuItem.id === item.id );
+        let foundItem = this.items.find( (mitem) => mitem.menuItem.MenuId === item.MenuId );
 
         if(foundItem){
             this.increaseQty(foundItem);
         }else{
             this.items.push(new CartItem(item));
         }
-        this.notificationsService.notify(`Você adicionou o item ${item.name}`);
+        this.notificationsService.notify(`Você adicionou o item ${item.Name}`);
     }
 
     removeItem(item:CartItem){
         this.items.splice(this.items.indexOf(item,1));
-        this.notificationsService.notify(`Você removeu o item ${item.menuItem.name}`);
+        this.notificationsService.notify(`Você removeu o item ${item.menuItem.Name}`);
     }
 
     total(): number{

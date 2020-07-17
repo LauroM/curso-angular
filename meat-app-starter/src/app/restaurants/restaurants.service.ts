@@ -14,25 +14,25 @@ export class RestaurantsService{
     constructor(private http: Http){}
 
     restaurants(): Observable<Restaurant []>{
-        return this.http.get(`${MEAT_API}/restaurants`)
+        return this.http.get(`${MEAT_API}/api/Restaurants`)
                 .map(response => response.json())
                 .catch(ErrorHandler.handleError);
     }
 
     restaurantsById(id: string): Observable<Restaurant>{
-        return this.http.get(`${MEAT_API}/restaurants/${id}`)
+        return this.http.get(`${MEAT_API}/api/Restaurants/${id}`)
                 .map(response => response.json())
                 .catch(ErrorHandler.handleError);
     }
 
     reviewsOfRestaurant(id: string): Observable<any>{
-        return this.http.get(`${MEAT_API}/restaurants/${id}/reviews`)
+        return this.http.get(`${MEAT_API}/api/Restaurants/${id}/reviews`)
                 .map(response => response.json())
                 .catch(ErrorHandler.handleError);
     }
 
     menuOfRestaurant(id:string): Observable<MenuItem[]>{
-        return this.http.get(`${MEAT_API}/restaurants/${id}/menu`)
+        return this.http.get(`${MEAT_API}/api/Restaurants/${id}/menu`)
                 .map(response => response.json())
                 .catch(ErrorHandler.handleError);
     }
